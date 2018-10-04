@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AccountKit 101</title>
+
+		<link rel="stylesheet" href="reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>AccountKit para tu Sitio Web</h1>
+				</section>
+
+				<section>
+					<section>
+						<h2>¿Qué es AccountKit?</h2>
+					</section>
+					<section>
+						Account Kit permite que las personas se registren en tu aplicación
+						e inicien sesión en ella únicamente usando un número de teléfono o
+						una dirección de correo electrónico, sin necesidad de una contraseña.
+					</section>
+					<section>
+						Account Kit usa la infraestructura de envío de correos electrónicos
+						y SMS de Facebook.
+					</section>
+					<section>
+						Account Kit NO requiere una cuenta de Facebook.
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>¿Cómo funciona?</h2>
+					</section>
+					<section>
+						Account Kit crea una base de datos exclusiva para tu aplicación.
+					</section>
+					<section>
+						Una API de REST te permite acceder a los datos en cualquier momento.
+					</section>
+					<section>
+						La base de datos se completa con una lista de los números de teléfono
+						o las direcciones de correo electrónico y los identificadores de las
+						cuentas que se pueden usar dentro de la aplicación.
+					</section>
+					<section data-background-image="img/accountkit-flow.jpeg">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Tokens</h2>
+					</section>
+					<section>
+						<ul>
+							<li>Token de acceso del cliente</li>
+							<li>Token de código de autorización</li>
+						</ul>
+					</section>
+					<section>
+						Con el token de acceso de cliente, después de un inicio de sesión
+						correcto, la aplicación del cliente puede recibir directamente un
+						token de acceso de larga duración, que a partir de entonces será el
+						responsable de pasar a tu servidor de manera segura para su
+						utilización en las llamadas a la API.
+					</section>
+					<section>
+						Con el token de código de autorización, después de un inicio de
+						sesión correcto, la aplicación del cliente recibirá un código de
+						autorización de corta duración, que será entonces responsable de
+						pasar de manera segura a tu servidor.<br>
+						Este proceso se ofrece como un recurso para disminuir riesgos en los
+						casos en los que un atacante intente hacerse pasar por tu aplicación
+						del cliente o interceptar de algún otro modo el token de acceso de
+						larga duración de la API.
+					</section>
+					<section>
+						Te recomendamos incluir un token de acceso en cada solicitud del
+						servidor a tu aplicación y verificar el identificador del usuario
+						desde el token y no directamente desde el cliente. Esto ayudará a
+						proteger tu aplicación de usuarios no autorizados.
+					</section>
+				</section>
+
+				<section>
+					<h2>Manos a la obra</h2>
+				</section>
+
+				<section>
+					1. Crea tu cuenta de Facebook Developer <br>
+					<a href="https://developers.facebook.com" target="_blank">https://developers.facebook.com</a>
+				</section>
+
+				<section>
+					<section>
+						2. Crea tu app <br>
+						<a href="https://developers.facebook.com/docs/accountkit/webjs" target="_blank">https://developers.facebook.com/docs/accountkit/webjs</a>
+					</section>
+					<section>
+						<img src="img/accounkit-agregar-producto-01.png" alt="">
+					</section>
+					<section>
+						<img src="img/accounkit-agregar-producto-02.png" alt="">
+					</section>
+					<section>
+						<img src="img/accounkit-agregar-producto-03.png" alt="">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						3. Configura AccountKit
+						<br>
+						<ul>
+							<li>Tipo de Login</li>
+							<li>URLs</li>
+							<li>Diseño</li>
+						</ul>
+					</section>
+					<section>
+						<img src="img/accounkit-configuracion-01.png" alt="">
+					</section>
+					<section>
+						<img src="img/accounkit-configuracion-02.png" alt="">
+					</section>
+					<section>
+						<img src="img/accounkit-configuracion-03.png" alt="">
+					</section>
+					<section>
+						<img src="img/accounkit-configuracion-04.png" alt="">
+					</section>
+				</section>
+
+				<section>
+					4. Código <br>
+
+					<a href="https://github.com/nmicht/accountkit-101" target="_blank">https://github.com/nmicht/accountkit-101</a>
+				</section>
+
+				<section>
+					<h2>GRACIAS</h2>
+					@nmicht <br>
+					hola@michelletorres.mx <br>
+					fb.com/michelletorres.mx <br>
+				</section>
+			</div>
+		</div>
+
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'reveal.js/plugin/markdown/marked.js' },
+					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
